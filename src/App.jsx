@@ -7,7 +7,8 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=0eb2f9e6dd554873aa7120429230511&q=${city}&aqi=no;`;
+    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=1206349403194e0e824150447242404&q=${city}&aqi=no`;
+   
 
     fetch(apiUrl)
       .then((res) => {
@@ -25,58 +26,60 @@ function App() {
       });
   }, [city]);
   return (
-    <div className="bg-slate-800 h-screen flex justify-center  items-start">
-      <div className="w-1/5 h-1/3 mt-40">
-        {weatherData && (
-          <Temperature
-            setCity={setCity}
-            stats={{
-              temp: weatherData.current.temp_c,
-              condition: weatherData.current.condition.text,
-              isDay: weatherData.current.is_day,
-              location: weatherData.location.name,
-              time: weatherData.location.localtime,
-            }}
-          />
-        )}
-      </div>
-      <div className="w-1/3 h-1/3 mt-40 p-10 grid grid-cols-2 gap-6">
-        <h1 className="text-slate-200 text-2xl col-span-2">
-          Today's Highlights
-        </h1>
-        {weatherData && (
-          <>
-            <Highlights
+    <div className="bg-slate-800 min-h-screen flex flex-col justify-center items-center px-4">
+      <div className="w-full max-w-screen-lg md:flex md:justify-between md:gap-4">
+        <div className="w-full md:w-1/2">
+          {weatherData && (
+            <Temperature
+              setCity={setCity}
               stats={{
-                title: "Wind Status",
-                value: weatherData.current.wind_mph,
-                unit: "mph",
-                direction: weatherData.current.wind_dir,
+                temp: weatherData.current.temp_c,
+                condition: weatherData.current.condition.text,
+                isDay: weatherData.current.is_day,
+                location: weatherData.location.name,
+                time: weatherData.location.localtime,
               }}
             />
-            <Highlights
-              stats={{
-                title: "Humidity",
-                value: weatherData.current.humidity,
-                unit: "%",
-              }}
-            />
-            <Highlights
-              stats={{
-                title: "Visibility",
-                value: weatherData.current.vis_miles,
-                unit: "miles",
-              }}
-            />
-            <Highlights
-              stats={{
-                title: "Air Pressure",
-                value: weatherData.current.pressure_mb,
-                unit: "mb",
-              }}
-            />
-          </>
-        )}
+          )}
+        </div>
+        <div className="w-full md:w-1/2 mt-4 md:mt-0">
+          <h1 className="text-slate-200 text-2xl text-center mb-4">Today's Highlights</h1>
+          <div className="grid grid-cols-2 gap-4">
+            {weatherData && (
+              <>
+                <Highlights
+                  stats={{
+                    title: "Wind Status",
+                    value: weatherData.current.wind_mph,
+                    unit: "mph",
+                    direction: weatherData.current.wind_dir,
+                  }}
+                />
+                <Highlights
+                  stats={{
+                    title: "Humidity",
+                    value: weatherData.current.humidity,
+                    unit: "%",
+                  }}
+                />
+                <Highlights
+                  stats={{
+                    title: "Visibility",
+                    value: weatherData.current.vis_miles,
+                    unit: "miles",
+                  }}
+                />
+                <Highlights
+                  stats={{
+                    title: "Air Pressure",
+                    value: weatherData.current.pressure_mb,
+                    unit: "mb",
+                  }}
+                />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

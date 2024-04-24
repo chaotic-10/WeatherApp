@@ -2,7 +2,7 @@ import React from "react";
 
 function Highlights({ stats }) {
   return (
-    <div className="bg-slate-600 p-2 text-slate-200 flex flex-col justify-start items-center ">
+    <div className="bg-gradient-to-br from-blue-500 to to-blue-900 p-2 text-slate-200 flex flex-col justify-start items-center  hover:shadow-2xl">
       <h2 className="text-sm mt-2">{stats.title}</h2>
       <div className="mt-2">
         {" "}
@@ -30,7 +30,7 @@ function Highlights({ stats }) {
       ) : null}
 
       {stats.title == "Humidity" ? (
-        <div className="w-full mt-4 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
+        <div className="w-full mt-4 bg-gradient-to-br from-blue-400 to to-blue-900 rounded-full h-1.5 mb-4 ">
           <div
             className="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500"
             style={{ width: `${stats.value}%` }}

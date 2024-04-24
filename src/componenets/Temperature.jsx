@@ -9,10 +9,10 @@ function Temperature({ setCity, stats }) {
       <div className="flex align-middle justify-center">
         <input
           type="text"
-          className="bg-slate-600 border border-slate-500 text-slate-200 placeholder-slate-400 text-md focus:border-slate-400 block w-60 p-2 focus:outline-none"
+          className=" bg-gradient-to-br from-blue-500 to-blue-800  text-slate-300 placeholder-white-400 text-md capitalize focus:border-slate-400 block w-60 p-2 text-xl font-mono focus:outline-none"
           placeholder="Enter Your City Name"
           onChange={handleCityChange}
-          defaultValue="New Delhi"
+          defaultValue=""
         />
         <div className="m-4">
           <svg
